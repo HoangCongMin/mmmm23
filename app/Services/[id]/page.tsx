@@ -1,14 +1,8 @@
-"use client";
-import { useEffect, useState } from "react";
-
 import Breadcrumb from "@/components/Common/Breadcrumb";
 import { GetItemServices } from "@/app/apis/GetDataHome";
 import { ResolvingMetadata, type Metadata } from "next";
 import {GetAbout} from'../../apis/GetDataHome';
-import {getImg} from'../../utils/util'
-
-
-
+import {getImg} from'../../utils/util';
 
 type Props = {
   params: { id: string };
@@ -22,6 +16,7 @@ export async function generateMetadata(
   const id = params.id;
 
     const product = await GetAbout(Number(id));
+    
 
   const previousImages = (await parent).openGraph?.images || [];
 
@@ -34,32 +29,18 @@ export async function generateMetadata(
   };
 }
 
-
-const ServiceItemPage = (params) => {
-  const [data,setData] = useState<any>({});
-
-  const DataServices = async () => {
-    try {
-      const res = await GetItemServices(params.params.id);
-      setData(res);
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
-  useEffect(() => {
-    DataServices();
-  }, [params.params.id]);
-
+const ServiceItemPage = async({ params, searchParams }: Props) => {
+  const serviceItem = await GetItemServices(params.id);
+  console.log("params: ", serviceItem);
   return (
     <>
       <Breadcrumb
-        pageName={data?.data?.title}
+        pageName={serviceItem?.data?.title}
         description=""
       />
 
-      <section id={`service-${params.params.id}`}>
-        <div className="container"><div dangerouslySetInnerHTML={{ __html: data?.data?.content }} /></div>
+      <section id={`service-${params.id}`}>
+        <div className="container"><div dangerouslySetInnerHTML={{ __html: serviceItem?.data?.content }} /></div>
       </section>
     </>
   );

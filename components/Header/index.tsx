@@ -20,11 +20,6 @@ const Header = () => {
     }
   };
 
-  // const data = async ()=> {
-  //   return await GetMenuData();
-  // };
-  console.log(data);
-
   // Navbar toggle
   const [navbarOpen, setNavbarOpen] = useState(false);
   const navbarToggleHandler = () => {
