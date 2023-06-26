@@ -49,7 +49,7 @@ module.exports = {
       },
       backgroundImage: {
         'nav-mobile': "url('/images/menu/map_menu.jpg')",
-      }
+      },
     },
   },
   plugins: [],

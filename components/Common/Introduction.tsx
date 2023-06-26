@@ -8,7 +8,10 @@ description,
 showLink = true,
 intoLink= "#",
 quoteLink= "/Contact",
-metaImage= ""
+metaImage= "",
+fontFamily= "",
+fontTitle="",
+fontDescription=""
 }: {
 pageName: string;
 description?: string;
@@ -18,18 +21,21 @@ showLink?: boolean;
 intoLink?: string;
 quoteLink?: string;
 metaImage?: string;
+fontFamily?: string,
+fontTitle?: string;
+fontDescription?: string;
 }) => {
 return (
     <>
-    <section id="introduction" className="relative z-10 overflow-hidden py-10 mt-28 lg:mt-[113px] bg-[linear-gradient(45deg,_#53b700,_#00c1bf)] dark:bg-none">
+    <section id="introduction" className={`relative z-10 overflow-hidden py-10 mt-28 lg:mt-[113px] bg-[linear-gradient(45deg,_#53b700,_#00c1bf)] dark:bg-none ${ fontFamily}`}>
         <div className="flex items-center">
 
         <div className="container">
         <div className="-mx-4 flex flex-wrap items-center">
             <div className="w-full px-4 md:w-8/12 lg:w-8/12">
                 <div className=" max-w-[570px] md:mb-0 ">
-                    <h1 className=" text-2xl font-bold text-white sm:text-3xl">{pageName}</h1>
-                    <p className="text-base font-medium leading-relaxed text-white">{description}</p>
+                    <h1 className={`text-2xl font-bold text-white sm:text-3xl ${fontTitle}`}>{pageName}</h1>
+                    <p className={`mt-[20px] text-base font-medium leading-relaxed text-white ${fontDescription}`}>{description}</p>
                     {showLink &&
                         <div className="text-base !leading-relaxed text-body-color mt-[50px]">
                             <div className="flex flex-col items-center space-y-4 sm:flex-row sm:space-x-4 sm:space-y-0">

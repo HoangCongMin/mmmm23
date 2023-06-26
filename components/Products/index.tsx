@@ -27,8 +27,8 @@ export default function Products() {
         spaceBetween={30}
         slidesPerView={4}
         navigation
-        onSwiper={(swiper) => console.log(swiper)}
-        onSlideChange={() => console.log('slide change')}
+        // onSwiper={(swiper) => console.log(swiper)}
+        // onSlideChange={() => console.log('slide change')}
         autoplay={true}
         className='swiper-container'
         breakpoints={{

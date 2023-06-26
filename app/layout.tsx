@@ -5,9 +5,9 @@ import ScrollToTop from "@/components/ScrollToTop";
 import "node_modules/react-modal-video/css/modal-video.css";
 import "../styles/index.css";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { Inter } from "next/font/google";
+import { Montserrat } from "next/font/google";
 
-const inter = Inter({ subsets: ["latin"] });
+const fontBase = Montserrat({ subsets: ["latin"] });
 
 const queryClient = new QueryClient();
 
@@ -29,7 +29,7 @@ export default function RootLayout({
       */}
       {/* <head /> */}
 
-      <body className="dark:bg-black">
+      <body className={`${fontBase.className} dark:bg-black`}>
         {/* <QueryClientProvider client={queryClient}> */}
           <Providers>
             <Header />

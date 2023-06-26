@@ -1,12 +1,28 @@
-import { GetAbout } from "../../apis/GetDataHome";
-import { ResolvingMetadata, type Metadata } from "next";
 import Head from "next/head";
+import React from "react";
+import { ResolvingMetadata, type Metadata } from "next";
+import { Merriweather, Noto_Serif, Inter } from "next/font/google";
+
+import { GetAbout } from "../../apis/GetDataHome";
 import AboutSectionOne from "@/components/About/AboutSectionOne";
 import AboutSectionTwo from "@/components/About/AboutSectionTwo";
 import Introduction from "@/components/Common/Introduction";
-import React from "react";
 import {getImg} from '../../utils/util'
 import Contact from "@/components/Contact";
+
+const blogFont = Merriweather({
+  subsets: ["vietnamese"],
+  weight: "400"
+});
+
+const blogTitleFont = Noto_Serif({
+  subsets: ["vietnamese"],
+  weight: "400"
+})
+
+const blogDescriptionFont = Inter({
+  subsets: ["vietnamese"]
+})
 
 type Props = {
   params: { id: string };
@@ -44,9 +60,12 @@ export default async function page({ params, searchParams }: Props) {
           pageName={data.data.title}
           description={data.data.short_content}
           metaImage={getImg(data.data.gallery)}
+          fontFamily={blogFont.className}
+          fontTitle={blogTitleFont.className}
+          fontDescription={blogDescriptionFont.className}
         />
-      <section className="overflow-hidden pt-[80px]">
-        <div className="container mt-36" dangerouslySetInnerHTML={{ __html: data.data.content }}></div>
+      <section className={`${blogFont.className} overflow-hidden section-blog-detail`}>
+        <div className="container mt-20" dangerouslySetInnerHTML={{ __html: data.data.content }}></div>
       </section>
       <Contact />
     </>

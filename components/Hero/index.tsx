@@ -12,39 +12,39 @@ const Hero = () => {
     <>
       <section
         id="home"
-        className="relative z-10 overflow-hidden pt-[150px] pb-16 md:pt-[150px] md:pb-[50px] xl:pt-[60px] xl:pb-[60px] 2xl:pt-[80px] 2xl:pb-[80px]"
+        className="relative z-10 overflow-hidden pb-16 xl:pb-[60px] 2xl:pb-[80px] pt-[60px] md:pt-[130px] lg:pt-[60px]"
       >
         <div className="container">
           <div className="-mx-4 flex flex-wrap items-center">
-            <div className="px-4 lg:w-3/5">
+            <div className="px-4 lg:w-3/5 w-full">
               <div className="wow fadeInUp" data-wow-delay=".2s">
                 <h1 className="mb-5 text-3xl font-bold leading-tight text-black dark:text-white sm:text-4xl sm:leading-tight md:leading-tight">
                 Công ty TNHH 1 thành viên công nghệ và truyền thông 3i</h1>
-                <p className="mb-12 text-base font-medium !leading-relaxed text-body-color dark:text-white dark:opacity-90">
+                <p className="text-base font-medium !leading-relaxed text-body-color dark:text-white dark:opacity-90">
                 3i được sáng lập với lý tưởng vận dụng sức sáng tạo của con người về măt công nghệ để phục vụ xã hội những sản phẩm và giải pháp mang tính trí tuệ và hiệu quả cao trong cuộc sống.                </p>
                 <div className="flex flex-col items-center justify-center space-y-4 sm:flex-row sm:space-x-4 sm:space-y-0">
                 </div>
               </div>
             </div>
-            <div className="px-4 lg:w-2/5">
+            <div className="px-4 lg:w-2/5 w-full">
               <Swiper
                 modules={[Autoplay]}
                 spaceBetween={0}
                 slidesPerView={1}
-                onSwiper={(swiper) => console.log(swiper)}
-                onSlideChange={() => console.log('slide change')}
+                // onSwiper={(swiper) => console.log(swiper)}
+                // onSlideChange={() => console.log('slide change')}
                 effect={"fade"}
                 autoplay={{delay: 3000}}
                 loop={true}
-                className="w-full"
+                className="w-full max-w-[500px]"
               >
                 {imagesData.map((item, index) => (
                     <SwiperSlide key={index} >
                       <Image
-                        alt=""
+                        alt={`Hero Image ${index}`}
                         src={item.image.props.src}
                         className="aspect-square w-full"
-                        width={1000}
+                        width={500}
                       />
                     </SwiperSlide>
                 ))}

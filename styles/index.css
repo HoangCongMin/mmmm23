@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
 
 @tailwind base;
 @tailwind components;
@@ -7,6 +8,14 @@
 @layer base {
   body {
     font-family: "Montserrat", sans-serif;
+  }
+
+  body *{
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .NavOpen{
+    overflow: hidden;
   }
 }
 
@@ -29,5 +38,129 @@
 
   input#checkboxLabel:checked ~ .box span {
     @apply opacity-100;
+  }
+
+  /* detail blog page */
+  .section-blog-detail h2{
+    font-family: 'Noto Serif', serif;
+    margin-bottom: 20px;
+  }
+
+  #problem li {
+    margin-bottom: 20px;
+    border-width: 1px;
+    border-style: solid;
+    border-radius: 10px;
+    overflow: hidden;
+  }
+
+  #problem li h3{
+    padding: 10px 20px;
+    color: white;
+  }
+
+  #problem li p{
+    padding: 10px 20px;
+  }
+  
+  #problem li:first-child{
+    border-color: #53b700;
+    margin-left: 10%;
+  }
+
+  #problem li:first-child h3{
+    background-color: #53b700;
+  }
+
+  #problem li:nth-child(2){
+    border-color: #009cb7;
+    margin-right: 5%;
+    margin-left: 5%;
+  }
+
+  #problem li:nth-child(2) h3{
+    background-color: #009cb7;
+  }
+
+  #problem li:last-child{
+    border-color: #6947e4;
+    margin-right: 10%;
+  }
+
+  #problem li:last-child h3{
+    background-color: #6947e4;
+  }
+
+  #benefit {
+    border-collapse: initial;
+  }
+
+  #benefit td{
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  }
+
+  #benefit h3{
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+
+  #benefit p{
+    text-align: justify;
+  }
+
+  .benefit-col4 td{
+    width: calc(100% / 4);
+  }
+
+  #feature,
+  #feature table,
+  #introducttion,
+  #introducttion table,
+  #options, 
+  #options table,
+  #salient-features,
+  #salient-features table{
+    border-collapse: initial;
+  }
+  
+  #feature tr,
+  #introducttion tr{
+    vertical-align: top;
+  }
+
+  #feature table td a{
+    border-width: 1px 1px 1.5px;
+    border-style: solid;
+    border-color: transparent;
+    border-radius: 5px;
+    cursor: pointer;
+    padding: 15px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+
+  #feature table td a:hover{
+    border-color: rgba(171, 173, 171, 0.4) rgba(171, 173, 171, 0.4) green;
+  }
+
+  #feature table td a>*{
+    margin-right: 7px;
+  }
+  #feature ul li{
+    margin-bottom: 10px;
+  }
+
+  #advantage td p{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center
+  }
+
+  #options td{
+    background-color: #f7f7f7;
+    text-align: center;
   }
 }
