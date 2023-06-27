@@ -4,21 +4,25 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import { BsChevronDown } from "react-icons/bs";
 
-import ThemeToggler from "./ThemeToggler";
+// import ThemeToggler from "./ThemeToggler";
+import LanguageToggle from "./LanguageToggle";
 import menuData from "./menuData";
 import menuMobileBg from "@/public/images/menu/map_menu.jpg"
 
 import { GetMenuData } from "../../app/apis/GetDataHome";
+import { GetLanguage } from "@/app/apis/GetDataHome";
 import { handleItemNavBar } from "../../app/utils/util";
 
 const Header = () => {
-  const [data,setData]=useState([])
-
+  const [data,setData]=useState([]);
+  const [languageData,setLanguageData]=useState([]);
 
   const setdata = async () => {
     try {
       const res = await GetMenuData();
+      const resLanguage = await GetLanguage();
       setData(res.data);
+      setLanguageData(resLanguage.data)
     } catch (error) {
       console.log(error);
     }
@@ -119,7 +123,7 @@ const Header = () => {
             </div>
             <nav
               id="navbarCollapse"
-              className={`w-[1200]:overflow-y-auto bg-nav-mobile xl:bg-none navbar fixed top-[60px] xs:top-[80px] md:top-[90px] lg:top-[100px] right-0 bottom-0 z-30 ease border-body-color/50 bg-white px-4 py-4 duration-300 dark:border-body-color/20 dark:bg-dark xl:visible xl:static xl:w-auto xl:border-none xl:!bg-transparent xl:p-0 xl:opacity-100 ${
+              className={`max-[1200px]:overflow-y-auto bg-nav-mobile xl:bg-none navbar fixed top-[60px] xs:top-[80px] md:top-[90px] lg:top-[100px] right-0 bottom-0 z-30 ease border-body-color/50 bg-white px-4 py-4 duration-300 dark:border-body-color/20 dark:bg-dark xl:visible xl:static xl:w-auto xl:border-none xl:!bg-transparent xl:p-0 xl:opacity-100 ${
                 navbarOpen
                   ? "visibility left-[0] opacity-100"
                   : "invisible left-[-100%] opacity-0"
@@ -217,6 +221,8 @@ const Header = () => {
               </div>
               <div>
                 {/* <ThemeToggler /> */}
+                <LanguageToggle languageData={languageData}/>
+
               </div>
             </div>
           </div>
