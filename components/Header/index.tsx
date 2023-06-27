@@ -14,6 +14,7 @@ import { GetLanguage } from "@/app/apis/GetDataHome";
 import { handleItemNavBar } from "../../app/utils/util";
 
 const Header = () => {
+  
   const [data,setData]=useState([]);
   const [languageData,setLanguageData]=useState([]);
 
@@ -23,6 +24,7 @@ const Header = () => {
       const resLanguage = await GetLanguage();
       setData(res.data);
       setLanguageData(resLanguage.data)
+      // setLoalstore(resLanguage.data)
     } catch (error) {
       console.log(error);
     }

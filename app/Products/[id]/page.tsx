@@ -10,6 +10,9 @@ import Introduction from "@/components/Common/Introduction";
 import {getImg} from '../../utils/util'
 import Contact from "@/components/Contact";
 
+
+ 
+
 const blogFont = Merriweather({
   subsets: ["vietnamese"],
   weight: "400"
@@ -50,6 +53,21 @@ export async function generateMetadata(
 
 export default async function page({ params, searchParams }: Props) {
   const data = await GetAbout(Number(params.id));
+  const languageChoose = searchParams.keyword;
+  console.log(languageChoose)
+  let dataContent = data?.data?.content;
+  if (languageChoose === 'CMS_LANGUAGE20211027001'){
+    return dataContent;
+  } else {
+    const multiLanguage = JSON.parse(data?.data?.multiple_language);
+    console.log(typeof(multiLanguage))
+    multiLanguage.map((item) => {
+      if (item.lgn === languageChoose){
+        return dataContent = item.content
+      }
+    });
+  }
+
   return (
     <>
       <Head>
@@ -65,7 +83,7 @@ export default async function page({ params, searchParams }: Props) {
           fontDescription={blogDescriptionFont.className}
         />
       <section className={`${blogFont.className} overflow-hidden section-blog-detail`}>
-        <div className="container mt-20" dangerouslySetInnerHTML={{ __html: data.data.content }}></div>
+        <div className="container mt-20" dangerouslySetInnerHTML={{ __html: dataContent }}></div>
       </section>
       <Contact />
     </>

@@ -16,6 +16,9 @@ export const metadata = {
   description: "Được thành lâp vào tháng 3 năm 2006 với tiền thân là một đội chuyên gia phần mềm và giải pháp viễn thông có kinh nghiệm từ Hàn Quốc. Chúng tôi đang từng bước đạt được uy tín và niềm tin từ khách hàng với những sản phẩm công nghệ hiện đại và phù hợp với các doanh nghiệp trong nước và các đối tác nước ngoài như Hàn Quốc , Nhật Bản , Trung Quốc.",
 };
 
+
+
+
 export default function RootLayout({
   children,
 }: {
@@ -31,7 +34,7 @@ export default function RootLayout({
 
       <body className={`${fontBase.className} dark:bg-black`}>
         {/* <QueryClientProvider client={queryClient}> */}
-          <Providers>
+          <Providers >
             <Header />
             {children}
             <Footer />

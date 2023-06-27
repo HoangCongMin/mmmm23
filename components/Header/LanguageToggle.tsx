@@ -2,9 +2,28 @@
 "use client";
 import { useState, useEffect } from "react";
 import { FaEarthAsia } from "react-icons/fa6";
+import { useSearchParams,useRouter,usePathname,useParams } from 'next/navigation'
+import Link from 'next/link'
 
-const LanguageToggle = (languageData) => {
+
+// import {setLoalstore} from'../../app/utils/common'
+
+const LanguageToggle = ( languageData) => {
   const [openDropDown, setOpenDropDown] = useState(false);
+  const searchParams = useSearchParams();
+  const ma= searchParams.get('keyword');
+  const pram=useParams()
+  
+
+
+  console.log(pram)
+  // const handleChangeLanguage = (code,e) => {
+  //   e.preventDefault()
+  //   router.push('/Products/2706',{title:code})
+  //   console.log(searchParams)
+
+  //   onClick={(e) => handleChangeLanguage(item.Code,e)}
+  // }
 
   return (
     <div className="relative">
@@ -14,10 +33,10 @@ const LanguageToggle = (languageData) => {
       >
         <FaEarthAsia/>
       </button>
-      <ul className={`absolute min-[200px] transition right-0 bg-white p-3 rounded-[5px] shadow-sm text-left text-base ${openDropDown ? "top-[110%] opacity-0" : "top-[100%] opacity-100"}`}>
+      <ul className={`absolute min-w-[150px] transition right-0 bg-white p-3 rounded-[5px] shadow-sm text-left text-base ${openDropDown ? "top-[110%] opacity-0" : "top-[100%] opacity-100"}`}>
         {languageData?.languageData?.map((item, index) => {
           return (
-            <li key={index} value={item.Code} className="mb-[5px]">{item.Name}</li>
+            <Link href={{pathname:`/Products/${pram.id}/`,query: { keyword: `${item.Code}` }}} key={index} className="mb-[5px] cursor-pointer" >{item.Name}</Link>
           )
         })}
       </ul>
