@@ -222,6 +222,7 @@ const Header = ({title}) => {
                   href="/signup"
                   className="ease-in-up hidden rounded-md bg-[green] py-3 px-8 text-base font-bold text-white transition duration-300 hover:bg-opacity-90 hover:shadow-signUp md:block md:px-9 lg:px-6 xl:px-9"
                 >
+                 
                   Đăng nhập
                 </Link>
               </div>
